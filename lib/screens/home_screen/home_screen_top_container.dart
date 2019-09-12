@@ -1,23 +1,6 @@
-import 'package:flight_list_ui/widgets/custome_shape_clipper.dart';
+import 'package:flight_list_ui/widgets/home_screen_widget/choice_chip_button.dart';
+import 'package:flight_list_ui/widgets/home_screen_widget/custome_shape_clipper.dart';
 import 'package:flutter/material.dart';
-
-class HomeScreen extends StatelessWidget {
-  String title;
-
-  HomeScreen({
-    this.title,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      body: Column(
-        children: <Widget>[HomeScreenTopContainer()],
-      ),
-    );
-  }
-}
 
 Color firstColor = Colors.redAccent;
 Color secondColor = Colors.red;
@@ -32,20 +15,23 @@ class HomeScreenTopContainer extends StatefulWidget {
   }
 }
 
-List<String> locations = ['Da Nang (DN)', 'Hue (H)', 'Ha Noi (HN)'];
-
-TextStyle dropDownSelectedItemLabelStyle =
-    TextStyle(color: Colors.white, fontSize: 16);
-TextStyle dropDownItemLabelStyle = TextStyle(color: Colors.red, fontSize: 16);
-
 class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
+  List<String> locations = ['Da Nang', 'Hue', 'Ha Noi'];
+
+  TextStyle dropDownSelectedItemLabelStyle =
+      TextStyle(color: Colors.white, fontSize: 16);
+  TextStyle dropDownItemLabelStyle =
+      TextStyle(color: Colors.blueAccent, fontSize: 16);
+
   var selectedLocationIndex = 0;
   var searchLocationController = TextEditingController();
-
+  String selectedPopupMenuItem;
   bool isflightSelected = false;
   @override
   Widget build(BuildContext context) {
-    searchLocationController.text = locations[0];
+    searchLocationController.text = locations[selectedLocationIndex];
+    selectedPopupMenuItem = locations[selectedLocationIndex];
+
     // TODO: implement build
     return Stack(children: <Widget>[
       ClipPath(
@@ -53,7 +39,7 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
           child: Container(
             height: 400,
             decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [Colors.red, Colors.orange])),
+                gradient: LinearGradient(colors: [Colors.purple, Colors.blue])),
           )),
       Column(
         children: <Widget>[
@@ -73,6 +59,8 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
                 onSelected: (index) {
                   setState(() {
                     selectedLocationIndex = index;
+                    selectedPopupMenuItem = locations[selectedLocationIndex];
+                    searchLocationController.text = locations[selectedLocationIndex];
                   });
                 },
                 itemBuilder: (BuildContext context) => <PopupMenuItem<int>>[
@@ -100,7 +88,7 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
                 ],
                 child: Row(children: <Widget>[
                   Text(
-                    locations[0],
+                    selectedPopupMenuItem,
                     style: dropDownSelectedItemLabelStyle,
                   ),
                   Icon(
@@ -165,15 +153,15 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
                     this.isflightSelected = true;
                   });
                 },
-                child: ChoiceChip(
+                child: ChoiceChipButton(
                     Icons.flight_takeoff, "Flights", this.isflightSelected),
               ),
               SizedBox(
                 width: 20,
               ),
               InkWell(
-                child:
-                    ChoiceChip(Icons.hotel, "Hotels", !this.isflightSelected),
+                child: ChoiceChipButton(
+                    Icons.hotel, "Hotels", !this.isflightSelected),
                 onTap: () {
                   setState(() {
                     this.isflightSelected = false;
@@ -185,45 +173,5 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
         ],
       )
     ]);
-  }
-}
-
-class ChoiceChip extends StatefulWidget {
-  ChoiceChip(this.icon, this.text, this.isSelected);
-  IconData icon;
-  String text;
-  bool isSelected;
-  _ChoiceChipState createState() => _ChoiceChipState(icon, text, isSelected);
-}
-
-class _ChoiceChipState extends State<ChoiceChip> {
-  _ChoiceChipState(this.icon, this.text, this.isSelected);
-  IconData icon;
-  String text;
-  bool isSelected;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color:
-              widget.isSelected == true ? Colors.white.withOpacity(0.15) : null,
-          borderRadius: BorderRadius.all(Radius.circular(20))),
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-      child: Row(
-        children: <Widget>[
-          Icon(
-            widget.icon,
-            color: Colors.white,
-          ),
-          SizedBox(
-            width: 4,
-          ),
-          Text(
-            widget.text,
-            style: TextStyle(color: Colors.white),
-          ),
-        ],
-      ),
-    );
   }
 }

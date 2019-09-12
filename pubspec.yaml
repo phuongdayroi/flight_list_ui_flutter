@@ -23,6 +23,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+  cached_network_image: ^1.1.1
+  flutter_money_formatter: ^0.8.3
 
 dev_dependencies:
   flutter_test:
@@ -87,4 +89,4 @@ fonts:
       - asset: assets/fonts/Raleway/Raleway-Regular.ttf
       - asset: assets/fonts/Raleway/Raleway-SemiBold.ttf
 assets:
-    - asset/images
+    - assets/images
