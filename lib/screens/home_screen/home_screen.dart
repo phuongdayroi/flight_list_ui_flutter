@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        // bottomNavigationBar: CustomeAppbar(),
+        bottomNavigationBar: CustomAppBar(),
         body: ListView(
       children: <Widget>[
         HomeScreenTopContainer(),

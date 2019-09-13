@@ -44,10 +44,13 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
       Column(
         children: <Widget>[
           SizedBox(
-            height: 50,
+            height: 10,
           ),
           Row(
             children: <Widget>[
+              SizedBox(
+                width: 10,
+              ),
               Icon(
                 Icons.location_on,
                 color: Colors.white,
@@ -60,7 +63,8 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
                   setState(() {
                     selectedLocationIndex = index;
                     selectedPopupMenuItem = locations[selectedLocationIndex];
-                    searchLocationController.text = locations[selectedLocationIndex];
+                    searchLocationController.text =
+                        locations[selectedLocationIndex];
                   });
                 },
                 itemBuilder: (BuildContext context) => <PopupMenuItem<int>>[
@@ -102,6 +106,7 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
                 Icons.settings,
                 color: Colors.white,
               ),
+              SizedBox(width: 10,)
             ],
           ),
           SizedBox(

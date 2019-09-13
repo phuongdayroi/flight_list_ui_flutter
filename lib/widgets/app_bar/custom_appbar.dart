@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CustomeAppbar extends StatelessWidget{
- 
-  List<BottomNavigationBarItem>     bottomBarItems = List<BottomNavigationBarItem>();
+class CustomAppBar extends StatelessWidget {
+  List<BottomNavigationBarItem> bottomBarItems;
 
   CustomAppBar() {
+    bottomBarItems = new List<BottomNavigationBarItem>();
     bottomBarItems.add(new BottomNavigationBarItem(
         icon: Icon(Icons.home),
         title: Text(
