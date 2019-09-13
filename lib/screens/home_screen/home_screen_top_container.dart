@@ -1,5 +1,7 @@
-import 'package:flight_list_ui/widgets/home_screen_widget/choice_chip_button.dart';
-import 'package:flight_list_ui/widgets/home_screen_widget/custome_shape_clipper.dart';
+import 'package:flight_list_ui/business_widgets/custome_shape_clipper.dart';
+import 'package:flight_list_ui/screens/flight_listing_screen/flight_listing.dart';
+import 'package:flight_list_ui/screens/home_screen/widgets/choice_chip_button.dart';
+
 import 'package:flutter/material.dart';
 
 Color firstColor = Colors.redAccent;
@@ -39,12 +41,13 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
           child: Container(
             height: 400,
             decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [Colors.purple, Colors.blue])),
+                gradient: LinearGradient(
+                    colors: [Colors.deepPurple, Colors.blueAccent])),
           )),
       Column(
         children: <Widget>[
           SizedBox(
-            height: 10,
+            height: 30,
           ),
           Row(
             children: <Widget>[
@@ -106,7 +109,9 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
                 Icons.settings,
                 color: Colors.white,
               ),
-              SizedBox(width: 10,)
+              SizedBox(
+                width: 10,
+              )
             ],
           ),
           SizedBox(
@@ -128,20 +133,34 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
               child: TextField(
                 style: TextStyle(color: Colors.black, fontSize: 18),
                 controller: searchLocationController,
-                cursorColor: thirdColor,
+                cursorColor: Colors.black,
                 decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 32, vertical: 14),
-                    border: InputBorder.none,
-                    suffix: Material(
-                        elevation: 2,
-                        borderRadius: BorderRadius.all((Radius.circular(30))),
-                        child: Container(
-                          child: Icon(
-                            Icons.search,
-                            color: Colors.blue,
-                          ),
-                        ))),
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 32.0, vertical: 14.0),
+                  suffixIcon: Material(
+                    elevation: 2.0,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(30.0),
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FlightListingScreen()
+                                // InheritedFlightListing(
+                                //   child: FlightListingScreen(),
+                                // )
+                                ));
+                      },
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.blueAccent,
+                      ),
+                    ),
+                  ),
+                  border: InputBorder.none,
+                ),
               ),
             ),
           ),

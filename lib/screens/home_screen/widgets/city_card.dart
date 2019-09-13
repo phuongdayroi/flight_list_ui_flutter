@@ -1,21 +1,14 @@
+import 'package:flight_list_ui/helpers/convert_currency.dart';
 import 'package:flight_list_ui/models/city_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
 class CityCard extends StatelessWidget {
   CityCard(this.cityItem);
   CityItem cityItem;
 
-  FlutterMoneyFormatter currencyFormat(double amount, String symbol,
-          String decimalSeparator, String thousanSeparator) =>
-      new FlutterMoneyFormatter(
-          amount: amount,
-          settings: MoneyFormatterSettings(
-              thousandSeparator: thousanSeparator,
-              decimalSeparator: decimalSeparator,
-              symbol: symbol));
+  
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,7 +36,7 @@ class CityCard extends StatelessWidget {
                     child: Row(
                       children: <Widget>[
                         Container(
-                          width: 65,
+                          width: 70,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -74,12 +67,13 @@ class CityCard extends StatelessWidget {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
                           padding: EdgeInsets.all(4),
-                          child: Text('${cityItem.discount}%',
+                          child: Text('${cityItem.discount} %',
                               style: TextStyle(
                                 color: Colors.red,
-                                fontSize: 12,
+                                fontSize: 13,
                               )),
-                        )
+                        ),
+                        SizedBox(width: 3,)
                       ],
                     ),
                   ),
@@ -98,7 +92,7 @@ class CityCard extends StatelessWidget {
                   '${currencyFormat(cityItem.newPrice, "\$", ".", ",").output.symbolOnLeft}',
                   style: TextStyle(
                       fontSize: 14,
-                      color: Colors.black,
+                      color: Colors.blueAccent,
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
@@ -108,7 +102,8 @@ class CityCard extends StatelessWidget {
                   '(${currencyFormat(cityItem.oldPrice, "\$", ".", ",").output.symbolOnLeft})',
                   style: TextStyle(
                     fontSize: 13,
-                    color: Colors.grey,
+                    color: Colors.black45,
+                    decoration: TextDecoration.lineThrough
                   ),
                 ),
               ],

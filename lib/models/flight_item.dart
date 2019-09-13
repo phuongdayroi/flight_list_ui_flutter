@@ -1,4 +1,4 @@
-class CityItem {
+class FlightItem {
   final String id;
   final String cityId;
   final String name;
@@ -7,10 +7,12 @@ class CityItem {
   final double oldPrice;
   final double newPrice;
   final String imagePath;
-  CityItem(this.id, this.cityId, this.name, this.date, this.discount,
-      this.oldPrice, this.newPrice, this.imagePath);
+  final double rate;
+  final String airline;
+  FlightItem(this.id, this.cityId, this.name, this.date, this.discount,
+      this.oldPrice, this.newPrice, this.imagePath, this.rate, this.airline);
 
-  CityItem.fromJson(Map<dynamic, dynamic> json)
+  FlightItem.fromJson(Map<dynamic, dynamic> json)
       : id = json["id"],
         name = json['name'],
         date = json['date'],
@@ -18,7 +20,9 @@ class CityItem {
         discount = json["discount"],
         oldPrice = json["oldprice"],
         newPrice = json["newprice"],
-        imagePath = json["imagepath"];
+        imagePath = json["imagepath"],
+        rate = json["rate"],
+        airline = json["rate"];
 
   Map<String, dynamic> toJson() => {
         "id": id,
@@ -29,5 +33,7 @@ class CityItem {
         'oldprice': oldPrice,
         'newprice': newPrice,
         'imagepath': imagePath,
+        'rate': rate,
+        'airline': airline,
       };
 }

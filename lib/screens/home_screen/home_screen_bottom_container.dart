@@ -1,6 +1,7 @@
 import 'package:flight_list_ui/models/city_item.dart';
-import 'package:flight_list_ui/widgets/home_screen_widget/city_card.dart';
-import 'package:flight_list_ui/widgets/home_screen_widget/custsomize_text.dart';
+import 'package:flight_list_ui/screens/home_screen/widgets/city_card.dart';
+import 'package:flight_list_ui/screens/home_screen/widgets/custsomize_text.dart';
+
 import 'package:flutter/material.dart';
 
 class HomeScreenBottomContainer extends StatefulWidget {
@@ -37,7 +38,7 @@ class _HomeScreenBottomContainerState extends State<HomeScreenBottomContainer> {
               Spacer(),
               InkWell(
                 child: viewSelectionText('VIEW ALL ($itemCount)',
-                    Colors.deepOrange, viewAllSelected),
+                    Colors.deepPurple, viewAllSelected),
                 onTap: () {
                   setState(() {
                     viewAllSelected = !viewAllSelected;
@@ -69,7 +70,7 @@ List<CityCard> getCityCards(List<CityItem> cityItems) {
 
 List<CityItem> getCityItems() {
   List<CityItem> citys = new List<CityItem>();
-  citys.add(new CityItem("1", "1", "Ha Noi", "9/2019", 30.0, 150.0, 100,
+  citys.add(new CityItem("1", "1", "Ha Noi", "9/2019", 30, 150.0, 100,
       "https://cdn.pixabay.com/photo/2019/08/02/23/09/banff-4380804_960_720.jpg"));
   citys.add(new CityItem("2", "2", "Da Nang", "9/2019", 15, 250, 180,
       "https://cdn.pixabay.com/photo/2015/11/07/11/41/da-nang-1031403_960_720.jpg"));
