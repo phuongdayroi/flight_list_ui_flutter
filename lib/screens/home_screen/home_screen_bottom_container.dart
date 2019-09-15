@@ -78,5 +78,13 @@ List<CityItem> getCityItems() {
       "https://cdn.pixabay.com/photo/2017/12/27/06/35/street-3042078_960_720.jpg"));
   citys.add(new CityItem("4", "4", "Hue", "9/2019", 20, 200, 260,
       "https://cdn.pixabay.com/photo/2016/03/04/12/03/vietnam-1235935_960_720.jpg"));
+  citys.add(new CityItem("1", "1", "Ha Noi", "9/2019", 30, 150.0, 100,
+      "https://cdn.pixabay.com/photo/2019/08/02/23/09/banff-4380804_960_720.jpg"));
+  citys.add(new CityItem("2", "2", "Da Nang", "9/2019", 15, 250, 180,
+      "https://cdn.pixabay.com/photo/2015/11/07/11/41/da-nang-1031403_960_720.jpg"));
+  citys.add(new CityItem("3", "3", "Hoi An", "9/2019", 50, 300, 150,
+      "https://cdn.pixabay.com/photo/2017/12/27/06/35/street-3042078_960_720.jpg"));
+  citys.add(new CityItem("4", "4", "Hue", "9/2019", 20, 200, 260,
+      "https://cdn.pixabay.com/photo/2016/03/04/12/03/vietnam-1235935_960_720.jpg"));
   return citys;
 }

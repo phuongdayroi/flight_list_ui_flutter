@@ -1,4 +1,4 @@
-import 'package:flight_list_ui/business_widgets/app_bar/custom_appbar.dart';
+import 'package:flight_list_ui/screens/home_screen/widgets/CustomAppBottomBar.dart';
 import 'package:flutter/material.dart';
 
 import 'home_screen_bottom_container.dart';
@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        bottomNavigationBar: CustomAppBar(),
+        bottomNavigationBar: CustomAppBottomBar(),
         body: SingleChildScrollView(
             child: Column(
           children: <Widget>[

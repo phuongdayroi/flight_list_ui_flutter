@@ -9,7 +9,7 @@ class FlightItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
       Container(
-          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           padding: EdgeInsets.all(16),
           height: 100,
           decoration: new BoxDecoration(
@@ -33,7 +33,7 @@ class FlightItemCard extends StatelessWidget {
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        width: 5,
+                        width: 20,
                       ),
                       Text(
                         '(${currencyFormat(flightItem.oldPrice, "\$", ".", ",").output.symbolOnLeft})',
@@ -54,13 +54,13 @@ class FlightItemCard extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.all(4),
                             decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.1),
+                                color: Colors.black.withOpacity(0.05),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(4))),
                             child: Row(
                               children: <Widget>[
                                 Icon(
-                                  Icons.archive,
+                                  Icons.date_range,
                                   size: 16,
                                 ),
                                 SizedBox(
@@ -71,50 +71,56 @@ class FlightItemCard extends StatelessWidget {
                             ),
                           )),
                       SizedBox(
-                        width: 20,
+                        width: 10,
                       ),
                       InkWell(
                           onTap: () {},
                           child: Container(
                             padding: EdgeInsets.all(4),
                             decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.1),
+                                color: Colors.black.withOpacity(0.05),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(4))),
                             child: Row(
                               children: <Widget>[
                                 Icon(
-                                  Icons.archive,
+                                  Icons.location_city,
                                   size: 16,
                                 ),
                                 SizedBox(
                                   width: 3,
                                 ),
-                                Text('${flightItem.date}')
+                                Text(
+                                  '${flightItem.name}',
+                                  style: TextStyle(color: Colors.black),
+                                )
                               ],
                             ),
                           )),
                       SizedBox(
-                        width: 20,
+                        width: 10,
                       ),
                       InkWell(
                           onTap: () {},
                           child: Container(
                             padding: EdgeInsets.all(4),
                             decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.1),
+                                color: Colors.black.withOpacity(0.05),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(4))),
                             child: Row(
                               children: <Widget>[
                                 Icon(
-                                  Icons.archive,
+                                  Icons.star,
                                   size: 16,
                                 ),
                                 SizedBox(
                                   width: 3,
                                 ),
-                                Text('${flightItem.date}')
+                                Text(
+                                  '${flightItem.rate}',
+                                  style: TextStyle(color: Colors.black),
+                                )
                               ],
                             ),
                           )),
@@ -123,7 +129,18 @@ class FlightItemCard extends StatelessWidget {
                 ],
               ),
             ],
-          ))
+          )),
+      Positioned(
+        top: 20,
+        right: 5,
+        child: Container(
+          padding: EdgeInsets.all(6),
+          child: Text('${flightItem.discount} %', style: TextStyle(fontSize: 14,color: Colors.white),),
+          decoration: BoxDecoration(
+              color: Colors.redAccent,
+              borderRadius: BorderRadius.all(Radius.circular(4))),
+        ),
+      )
     ]);
   }
 }
