@@ -9,7 +9,7 @@ class FlightItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
       Container(
-          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           padding: EdgeInsets.all(16),
           height: 100,
           decoration: new BoxDecoration(
@@ -84,7 +84,7 @@ class FlightItemCard extends StatelessWidget {
                             child: Row(
                               children: <Widget>[
                                 Icon(
-                                  Icons.location_city,
+                                  Icons.flight_takeoff,
                                   size: 16,
                                 ),
                                 SizedBox(
@@ -134,10 +134,10 @@ class FlightItemCard extends StatelessWidget {
         top: 20,
         right: 5,
         child: Container(
-          padding: EdgeInsets.all(6),
+          padding: EdgeInsets.all(4),
           child: Text('${flightItem.discount} %', style: TextStyle(fontSize: 14,color: Colors.white),),
           decoration: BoxDecoration(
-              color: Colors.redAccent,
+              color: Colors.redAccent.withOpacity(0.8),
               borderRadius: BorderRadius.all(Radius.circular(4))),
         ),
       )

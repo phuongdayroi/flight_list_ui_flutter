@@ -1,6 +1,6 @@
-import 'package:flight_list_ui/screens/flight_listing_screen/flight_listing.dart';
 import 'package:flight_list_ui/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,4 +19,7 @@ class MyApp extends StatelessWidget {
 }
 
 ThemeData appTheme =
-    ThemeData(primaryColor: Colors.deepPurpleAccent, fontFamily: 'Oxygen');
+    ThemeData(primaryColor: Colors.blue, fontFamily: 'Oxygen');
+class FlightApp with ChangeNotifier {
+  
+}

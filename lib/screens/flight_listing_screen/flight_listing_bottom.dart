@@ -3,135 +3,43 @@ import 'package:flight_list_ui/screens/flight_listing_screen/widgets/flight_item
 import 'package:flutter/material.dart';
 
 class FlightListingBottomPart extends StatelessWidget {
-  FlightListingBottomPart({Key key}) : super(key: key);
+  FlightListingBottomPart(this.flights);
+  List<FlightItem> flights;
+  List<FlightItemCard> flightItemCards;
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: Column(
-      children: <Widget>[
-        FlightItemCard(new FlightItem(
-            "1",
-            "1",
-            "Da Nang",
-            "Sep, 2019",
-            30,
-            350,
-            240,
-            "https://www.muabannhadat.vn/tin-tuc/wp-content/uploads/2017/10/can-ho-khach-san-da-nang-ngay-cang-soi-dong.jpg",
-            4.5,
-            "Vietnam Airline")), FlightItemCard(new FlightItem(
-            "1",
-            "1",
-            "Da Nang",
-            "Sep, 2019",
-            30,
-            350,
-            240,
-            "https://www.muabannhadat.vn/tin-tuc/wp-content/uploads/2017/10/can-ho-khach-san-da-nang-ngay-cang-soi-dong.jpg",
-            4.5,
-            "Vietnam Airline")), FlightItemCard(new FlightItem(
-            "1",
-            "1",
-            "Da Nang",
-            "Sep, 2019",
-            30,
-            350,
-            240,
-            "https://www.muabannhadat.vn/tin-tuc/wp-content/uploads/2017/10/can-ho-khach-san-da-nang-ngay-cang-soi-dong.jpg",
-            4.5,
-            "Vietnam Airline")), FlightItemCard(new FlightItem(
-            "1",
-            "1",
-            "Da Nang",
-            "Sep, 2019",
-            30,
-            350,
-            240,
-            "https://www.muabannhadat.vn/tin-tuc/wp-content/uploads/2017/10/can-ho-khach-san-da-nang-ngay-cang-soi-dong.jpg",
-            4.5,
-            "Vietnam Airline")), FlightItemCard(new FlightItem(
-            "1",
-            "1",
-            "Da Nang",
-            "Sep, 2019",
-            30,
-            350,
-            240,
-            "https://www.muabannhadat.vn/tin-tuc/wp-content/uploads/2017/10/can-ho-khach-san-da-nang-ngay-cang-soi-dong.jpg",
-            4.5,
-            "Vietnam Airline")), FlightItemCard(new FlightItem(
-            "1",
-            "1",
-            "Da Nang",
-            "Sep, 2019",
-            30,
-            350,
-            240,
-            "https://www.muabannhadat.vn/tin-tuc/wp-content/uploads/2017/10/can-ho-khach-san-da-nang-ngay-cang-soi-dong.jpg",
-            4.5,
-            "Vietnam Airline")),
-      ],
-    ));
+    flightItemCards = _flightItemCards(flights);
+    return Padding(
+      padding: EdgeInsets.only(left: 10, right: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              "Best deals for Next 6 Months",
+              style: TextStyle(color: Colors.black, fontSize: 16),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ListView(
+              shrinkWrap: true,
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              children: flightItemCards),
+        ],
+      ),
+    );
   }
 }
 
-List<FlightItemCard> fetchLightItemCard() {
-  List<FlightItemCard> items = new List<FlightItemCard>();
-  items.add(FlightItemCard(new FlightItem(
-      "1",
-      "1",
-      "Da Nang",
-      "Sep, 2019",
-      30,
-      350,
-      240,
-      "https://www.muabannhadat.vn/tin-tuc/wp-content/uploads/2017/10/can-ho-khach-san-da-nang-ngay-cang-soi-dong.jpg",
-      4.5,
-      "Vietnam Airline")));
-  items.add(FlightItemCard(new FlightItem(
-      "1",
-      "1",
-      "Da Nang",
-      "Sep, 2019",
-      30,
-      350,
-      240,
-      "https://www.muabannhadat.vn/tin-tuc/wp-content/uploads/2017/10/can-ho-khach-san-da-nang-ngay-cang-soi-dong.jpg",
-      4.5,
-      "Vietnam Airline")));
-  items.add(FlightItemCard(new FlightItem(
-      "1",
-      "1",
-      "Da Nang",
-      "Sep, 2019",
-      30,
-      350,
-      240,
-      "https://www.muabannhadat.vn/tin-tuc/wp-content/uploads/2017/10/can-ho-khach-san-da-nang-ngay-cang-soi-dong.jpg",
-      4.5,
-      "Vietnam Airline")));
-  items.add(FlightItemCard(new FlightItem(
-      "1",
-      "1",
-      "Da Nang",
-      "Sep, 2019",
-      30,
-      350,
-      240,
-      "https://www.muabannhadat.vn/tin-tuc/wp-content/uploads/2017/10/can-ho-khach-san-da-nang-ngay-cang-soi-dong.jpg",
-      4.5,
-      "Vietnam Airline")));
-  items.add(FlightItemCard(new FlightItem(
-      "1",
-      "1",
-      "Da Nang",
-      "Sep, 2019",
-      30,
-      350,
-      240,
-      "https://www.muabannhadat.vn/tin-tuc/wp-content/uploads/2017/10/can-ho-khach-san-da-nang-ngay-cang-soi-dong.jpg",
-      4.5,
-      "Vietnam Airline")));
+List<FlightItemCard> _flightItemCards(List<FlightItem> flights) {
+  var items = new List<FlightItemCard>();
+  for (var item in flights) {
+    items.add(new FlightItemCard(item));
+  }
   return items;
 }
